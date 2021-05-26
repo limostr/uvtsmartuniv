@@ -1,0 +1,380 @@
+
+<?php
+
+$title =  $this->translate('Session de préinscription'); # page title
+# meta keywords
+$this->headMeta()->appendName('keywords', 'Préinscription,  session UVT');
+# meta description
+$this->headMeta()->appendName('description', 'Préinscription ');
+# page title
+$this->headTitle($this->escapeHtml($title));
+#form
+$form = $this->form;
+$form->setAttribute('action', $this->url('session/actions-session-save',['id',$this->id]));  #oops
+$form->prepare();
+
+?>
+ 
+
+
+<?php $this->headScript()->appendFile($this->basePath().'/includes/ckeditor/ckeditor.js');?>		
+
+
+<?php 
+$optionpay="<option value=''>Choisir un paiement</option>";
+/*	$Modelfacture = new Application_Model_MonDbTable_Modelfacture();
+	$rec=$Modelfacture->factureModelformationgroupe($this->idnivtest); 
+	$optionpay="<option value=''>Choisir un paiement</option>";
+	$option['']="Choisir un paiement";
+	foreach ($rec as $row){
+	 $option[$row['facture']['idmodelfacture']]=$row['facture']['labelfacture'];
+		$optionpay.="<option value='".$row['facture']['idmodelfacture']."'>".$row['facture']['labelfacture']."</option>";
+		
+	}*/
+ 
+?>
+<script>
+
+function addnewPaiement(){
+
+$("#paiementscript").append("<input type='text' name='paiementcontrainte'> <select name='paiementmodel'><?=$optionpay?></select>");
+
+
+}
+  $(function() {
+	  
+ 
+	var optmyform = { 
+		    beforeSend: function()  { },
+		    uploadProgress: function(event, position, total, percentComplete) { },
+		    success: function() { },
+			complete: function(response) 
+			{
+				var obj = JSON.parse(response.responseText);
+				if(obj.status=="success"){
+					$("#messageconfig").html("<font color='green'>"+obj.status+"</font>");
+					if(obj.insertpay=='1'){ 
+						loadpayements("facture","<?=$this->url( "session/selectoptionactpay")?> ");
+					 	verifaddpay(); 
+					}else{
+						$("#formpay :input").attr("disabled", "disabled");
+						$("#messageconfig").html("<font color='red'>"+obj.message+"</font>");
+					}
+				}else{
+					 
+						$("#messageconfig").html("<font color='red'>"+obj.message+"</font>");
+				 
+					 
+				}
+				
+			},
+			error: function()
+			{	
+				$("#messageconfig").html("<font color='red'> ERROR: unable to upload files</font>");
+				
+			}
+		     
+		}; 
+			$("#formsession").ajaxForm(optmyform);
+    
+  });
+  </script>
+
+<?php if(!empty($this->messages['DbError'])):?>
+ <div class="alert alert-block alert-error fade in">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4 class="alert-heading">Erreur d'insertion des données</h4>
+            <p> 
+            	<?= $this->messages['DbError'] ?> 
+            </p>
+          </div>
+<?php endif;?>
+        
+	<div id="messageconfig">
+	
+	</div>	  
+<div class="row-fluid">
+	<div class="col-md-12">
+
+	<div class="row-fluid">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-title">
+					<span class="icon">
+						<i class="icon-align-justify"></i>									
+					</span>
+					<h5>Session de preinscription</h5>
+				</div>
+				<div class="card-body">
+				<?= $this->form()->openTag($form); ?>  				 
+				 
+					 	<table style="width: 100%;" border=1>
+					 	 
+						<tr>
+							<td>
+								<div class="mb-3">
+									<?=$this->formLabel($form->get('titresession')); ?>
+									<div class="form-group">
+										<?= $this->formText($form->get('titresession')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('titresession')); ?>  
+									</div>
+								</div>	
+							</td>
+							<td>
+								<div class="mb-3">
+									<?=$this->formLabel($form->get('profiles')); ?>
+									<div class="form-group">
+										<?= $this->formMultiCheckbox($form->get('profiles')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('profiles')); ?>  
+									</div>
+								</div>
+							</td>
+						</tr>						
+					 
+					 	<tr>
+							<td width="50%">
+								<div class="mb-3">
+									<?=$this->formLabel($form->get('datedebut')); ?>
+									<div class="form-group">
+										<?= $this->formDate($form->get('datedebut')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('datedebut')); ?>  
+									</div>
+								</div> 
+						</td>
+							<td width="50%">
+								<div class="mb-3">
+									<?=$this->formLabel($form->get('datefin')); ?>
+									<div class="form-group">
+										<?= $this->formDate($form->get('datefin')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('datefin')); ?>  
+									</div>
+								</div> 	
+							
+							</td>
+					    <tr>
+							<td width="50%" colspan="2"> 
+								<div class="mb-3">
+									<?=$this->formLabel($form->get('nbrannee')); ?>
+									<div class="form-group">
+										<?= $this->formText($form->get('nbrannee')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('nbrannee')); ?>  
+									</div>
+								</div>	
+							</td>
+						</tr>
+					    <tr>
+							<td width="50%" colspan="2">
+								<div class="mb-3">
+									<?=$this->formLabel($form->get('dateselection')); ?>
+									<div class="form-group">
+										<?= $this->formDate($form->get('dateselection')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('dateselection')); ?>  
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+
+							<td>
+								<div class="custom-control custom-checkbox">
+									
+									<?= $this->formCheckbox($form->get('paiementdirect')); ?>  
+									<?=$this->formLabel($form->get('paiementdirect')); ?> 
+									
+								</div>
+								<?= $this->formElementErrors($form->get('paiementdirect')); ?>  
+								<a href="#" onclick="addnewPaiement()" style="color:red;">Ajouter paiement model</a>
+							</td>
+							<td id="paiementscript">
+								 <?php 
+								 if(!empty($this->modelpay)){
+									$modepay=\Laminas\Json\Json::decode($this->modelpay);
+									if($modepay){ 
+										foreach($modepay as $value){
+											echo "<input type='text' name='paiementcontrainte2' value='".$value['contrainte']."'> <select name='paiementmodel2'>";
+											foreach ($option as $keyo => $valueo){
+												$selected=($keyo==$value['modelpaiement']) ? "selected" : '';
+												echo "<option value='$keyo' $selected>".$valueo."</option>";
+											}
+											echo "</select>";
+										}
+									}
+								}
+								 
+								 ?> 
+							</td> 
+					    <tr>
+						
+					 <tr>
+							<td colspan="2">
+							<div class="custom-control custom-checkbox">
+								<?=$this->formCheckbox($form->get('sessioncybler')); ?>
+								<?= $this->formLabel($form->get('sessioncybler')); ?>
+							</div> 
+						</tr>
+						
+						 <tr>
+							<td >
+								<div class="mb-3">
+									<?= $this->formLabel($form->get('listedescin')); ?>
+									<div class="input-group">
+										<?= $this->formTextarea($form->get('listedescin')); ?>
+									</div>
+
+									<div class="text-danger">
+										<?= $this->formElementErrors($form->get('listedescin')); ?>
+									</div> 
+								</div>
+							 </td>
+							<td >
+							<div class="mb-3">
+									<?= $this->formLabel($form->get('listeemail')); ?>
+									<div class="input-group">
+										<?= $this->formTextarea($form->get('listeemail')); ?>
+									</div>
+
+									<div class="text-danger">
+										<?= $this->formElementErrors($form->get('listeemail')); ?>
+									</div> 
+								</div>
+							
+							</td>
+						</tr>
+						<tr>
+						<td width="50%" rowspan="3"><div class="mb-3">
+								<?=$this->formLabel($form->get('semestre')); ?>
+							<div class="form-group">
+								<?= $this->formSelect($form->get('semestre')); ?>
+							</div>
+							
+							<div class="text-danger">
+								<?= $this->formElementErrors($form->get('semestre')); ?>
+							</div>
+						</div>
+							 </td>
+						</tr>
+						 
+						
+						
+						<tr>
+							<td width="50%" >
+							<div class="mb-3">
+									<?=$this->formLabel($form->get('nbrcandidat')); ?>
+									<div class="form-group">
+										<?= $this->formText($form->get('nbrcandidat')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('nbrcandidat')); ?>  
+									</div>
+								</div>		
+							 
+							</td>
+						</tr>
+						<tr>
+							<td width="50%"  >
+								
+							<div class="mb-3">
+									<?= $this->formLabel($form->get('lieu')); ?>
+									<div class="form-group">
+										<?= $this->formText($form->get('lieu')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('lieu')); ?>  
+									</div>
+								</div>	
+							
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								
+								<div class="mb-3">
+									<?=$this->formLabel($form->get('description')); ?>
+									<div class="form-group">
+										<?= $this->formTextarea($form->get('description')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('description')); ?>  
+									</div>
+								</div>	
+							</td>
+						</tr>
+
+
+					    
+					    
+						<tr>
+							<td colspan="2"> <b>Mail type :</b></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+							<div class="mb-3">
+									<?=$this->formLabel($form->get('sujetmail')); ?>
+									<div class="form-group">
+										<?= $this->formText($form->get('sujetmail')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('sujetmail')); ?>  
+									</div>
+								</div>	
+							
+							 </td>
+						</tr>
+						<tr>
+							<td colspan="2">
+							<div class="mb-3">
+									<?=$this->formLabel($form->get('Mailtype')); ?>
+									<div class="form-group">
+										<?= $this->formTextarea($form->get('Mailtype')); ?> 
+									</div> 
+									<div class="text-danger"> 
+											<?= $this->formElementErrors($form->get('Mailtype')); ?>  
+									</div>
+								</div> </td>
+						</tr>
+						<tr>
+							<td>
+								
+                           </td>
+						</tr>
+						
+						</table>
+						<div class="form-actions">
+							<div class="mb-3 float-right">
+								<?= $this->formHidden($form->get('idsessionpreinscription')); ?>
+								<?= $this->formHidden($form->get('csrf')); ?>
+								<div class="text-danger">
+									<?= $this->formElementErrors($form->get('csrf')); ?>
+								</div>
+								<?= $this->formSubmit($form->get('enregistrer')); ?>
+							</div>
+						</div>
+						
+						<?= $this->form()->closeTag(); ?>
+				</div>
+			</div>						
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span6">
+		
+		</div>
+	</div>	
+
+</div>
+</div>
+ 
+
+  

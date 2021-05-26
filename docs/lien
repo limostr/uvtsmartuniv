@@ -1,0 +1,7 @@
+http://localhost:8070/je-m-inscrit/mes-diplomes
+http://localhost:8070/profile/info-ar
+http://localhost:8070/profile/info-fr
+http://localhost:8070/contexte/management/gestion-contexte
+http://localhost:8070/session/config/etape/management
+http://localhost:8070/session/config/etape/gestion-etape
+http://localhost:8070/session/management/gestion-session

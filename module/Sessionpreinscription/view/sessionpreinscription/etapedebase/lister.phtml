@@ -1,0 +1,41 @@
+<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Liste des etapes</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body"> 
+                <table class="table table-bordred">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Etape</th>
+                        <th>Contexte</th>
+                        <th>Lien</th> 
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->ListeEtapes as $etape):?>
+                            <tr>
+                            <td><?=$etape->getIdetapedebase()?></td>
+                            <td><?=$etape->getLabeletapebase()?></td>
+                            <td><?=$etape->getLabelcontexte()?></td>
+                            <td><?=$etape->getLinkstatic()?></td> 
+                            <td><button type="button" onclick="deletedata('<?=$this->url('etapes/actions-session-etape-remove',['id'=>$etape->getIdetapedebase()])?>','etapes_<?=$etape->getIdetapedebase()?>','<?=$this->url('etapes/actions-session-etape-lister',['contexte'=>$this->contexte_id])?>','content-tabs')" class="btn btn-flat btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+
+                            </tr>
+
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+                <?= $this->paginationControl(
+                    $this->ListeEtapes,
+                    'sliding',         
+                    'partial/paginator-ajax',
+                    ['route' => 'etapes/actions-session-etape-lister',
+                    'content_id'=>'content-tabs',
+                    'params'=>['contexte'=>$this->contexte_id]
+                    ]
+                );?>
+        </div>
+</div>

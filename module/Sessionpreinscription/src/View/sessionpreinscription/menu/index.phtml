@@ -1,0 +1,67 @@
+ 
+<script type="text/javascript"> 
+
+
+$(function(){ 
+
+
+	$("#tree").fancytree({
+	    source: {
+	            url: "<?=$this->url(array('module'=>'admin','controller'=>'gformation','action'=>'treeformationwithsession'))?>"
+	    },
+	    lazyload: function(e, data){
+	 
+	            data.result = $.ajax({
+	                    url: "<?=$this->url(array('module'=>'admin','controller'=>'gformation','action'=>'treeformation'))?>",
+	                    dataType: "json"
+	            });
+	    },
+	    click: function(event, data) {
+           
+	    	$("#selectedformation").html(data.node.tooltip);
+
+	    	var keydata=data.node.key;
+			var keysplit=keydata.split("_");
+			var url="<?=$this->url(array('module'=>'admin','controller'=>'gsessions','action'=>'linksession'))?> ";
+			if(keysplit[0]=="NIV"){
+				url="<?=$this->url(array('module'=>'admin','controller'=>'gsessions','action'=>'gestionsession'))?>/idniv/"+data.node.key;
+			}else if(keysplit[0]=="SESS"){
+				  url="<?=$this->url(array('module'=>'admin','controller'=>'gsessions','action'=>'parametrage'))?>/idsess/"+data.node.key;
+			}else if(keysplit[0]=="GPERE"){
+				  url="<?=$this->url(array('module'=>'admin','controller'=>'gsessions','action'=>'linksession'))?> ";
+			}else if(keysplit[0]=="PERE"){
+				  url="<?=$this->url(array('module'=>'admin','controller'=>'gsessions','action'=>'linksession'))?>/niveau/"+data.node.key;
+			}else{
+				 url="<?=$this->url(array('module'=>'admin','controller'=>'gsessions','action'=>'linksession'))?>/niveau/"+data.node.key;
+			}
+			 
+	    	$.ajax({
+	    		type:"POST",
+	    		url:url , 
+	    		data:{
+	    			niveau:data.node.key 
+		    		,anneescolaire:1
+		    		},
+	    		beforeSend :function(){ 
+	    			 $('#maincontent').html("Encours...");
+	    		    },
+	    		success:function(response){ 
+	    	    	$('#maincontent').html(response); 
+	    		}
+	    	});
+	    	
+			
+             
+    	}
+	});
+  
+	});
+ 
+
+
+
+</script>
+ 
+ 
+
+ 

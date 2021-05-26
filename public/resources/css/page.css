@@ -1,0 +1,154 @@
+  
+ body {
+  background: rgb(204,204,204); 
+  font-size:9px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+section{
+	counter-reset: page;
+	 
+}
+
+page {
+  background: white;
+  background-image:url('resources/images/logo-color.svg');
+  background-size: 100%;
+  display: block;
+  margin:  auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+  font-family: "Times New Roman", Times, serif;
+}
+
+ 
+
+page:after {
+    /*counter-increment: page; 
+ 	content:"Page " counter(page) "/" counter(pages);
+	text-align: center;*/
+}
+page[size="A4"] {  
+  width: 21cm;
+  //height: 29.7cm; 
+}
+page[size="A4"][layout="landscape"] {
+  width: 29.7cm;
+  height: 21cm;  
+}
+page[size="A3"] {
+  width: 29.7cm;
+  height: 42cm;
+}
+page[size="A3"][layout="landscape"] {
+  width: 42cm;
+  height: 29.7cm;  
+}
+page[size="A5"] {
+  width: 14.8cm;
+  height: 21cm;
+}
+page[size="A5"][layout="landscape"] {
+  width: 21cm;
+  height: 14.8cm;  
+}
+
+table {
+  border: 1px solid #000000;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+   page-break-inside: avoid;
+}
+ 
+
+table td, table th {
+  border: 1px solid #000000;
+  padding: 5px 4px;
+}
+
+table tbody td {
+  font-size: 12px;
+}
+table tbody {
+ page-break-inside: inherit;
+}
+
+table thead th {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  text-align: left;
+}
+
+table tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  page-break-after: always;
+  
+}
+table tfoot td {
+  font-size: 14px;
+}
+
+.page-header {
+  position: fixed;
+  top: 0mm;
+  width: 100%;
+  border-bottom: 1px solid rgb(22, 7, 7); /* for demo */
+}
+.page-header {
+	  height: 100px;
+}
+/*
+@media print {  
+	 section { 
+	  page-break-before: always;
+	  page-break-after: always;
+	  counter-reset: page; 
+	}
+	table { 
+	padding:50px 0
+}
+	body  {
+	margin:0;
+		padding:0;
+	}
+    body, page { 
+		box-shadow: 0;
+		background: white;
+		background-image:url('resources/images/logo-color.svg');
+		background-size: 100%; 
+		
+	
+	}  
+	table thead {
+		display: table-header-group;
+		page-break-before: always;line-height :25pt;
+		flow: static(header)
+		}
+	table tbody {display: table-row-group; page-break-after: always;
+	
+	}
+	table tfoot {
+		display: table-footer-group;
+		page-break-after: always;
+		counter-increment: page;
+	}  
+	 
+	 thead { display: block; }
+tfoot { display: block; }
+tbody{
+	display: block;
+	
+}
+	@page {
+		margin-top: 2cm;
+		margin-bottom: 2cm;
+		margin-left: 2cm;
+		margin-right: 2cm; 
+		 
+	}
+  
+}*/

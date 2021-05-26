@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+   
+    <meta name="dcterms.created" content="15 5 2013 11:26:49 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title></title>
+    
+    <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<?php $this->headLink() ->prependStylesheet($this->basePath().'/library/hyesuncss/style-add.css'); ?> 
+	 
+<?php $this->headLink() ->prependStylesheet($this->basePath().'/library/bootstrap5/dist/css/bootstrap.css'); ?>
+	
+ 
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+	 
+
+
+	<?php $this->headLink() ->prependStylesheet($this->basePath().'/internet/code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'); ?>
+	<?php $this->headLink() ->prependStylesheet($this->basePath().'/fontawesome5.15.3-web/css/all.css'); ?>
+
+<!-- jQuery -->
+<?php  $this->headScript()->appendFile('/template/AdminLTE3/plugins/jquery/jquery.min.js');?>
+<!-- jQuery UI 1.11.4 -->
+<?php  $this->headScript()->appendFile('/template/AdminLTE3/plugins/jquery-ui/jquery-ui.min.js');?>
+	<?php  $this->headScript()->appendFile($this->basePath().'/internet/oss.maxcdn.com/respond/1.4.2/respond.min.js');?> 
+	<?php  $this->headScript()->appendFile($this->basePath().'/internet/oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js');?> 
+	<?php  $this->headScript()->appendFile($this->basePath().'/library/bootstrap5/dist/js/bootstrap.min.js');?> 
+	<?php  $this->headScript()->appendFile($this->basePath().'/library/bootstrap5/dist/js/bootstrap.bundle.min.js');?> 
+	<?php  $this->headScript()->appendFile($this->basePath().'/fontawesome5.15.3-web/js/all.min.js');?> 
+
+	<?php echo $this->headLink(); ?>
+	<?php echo $this->headScript();?>
+	<script>
+ 
+  </script>
+  
+	
+  </head>
+  
+  <body>
+ 
+ <div class="header"> 
+  
+		<div class="navbar navbar-inner">
+			<div class="container-fluid"> 
+				<a class="navbar-brand" href="#"><span>
+					<object data="<?=$this->basePath()?>/library/hyesuncss/images/logo.svg" type="image/svg+xml"></object>	
+				</span>
+				</a>
+				 
+                <div class="d-flex">
+					<div class="dropdown md-4 ms-3">
+						<button class="btn dropdown-toggle text-white" id="bd-versions" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"> 
+							  <div class=".user-image">
+								<img src="<?=$this->basePath()?>/img/identite40x40.png" class="user-image" alt="User Image"> 
+							  </div>  Bonjour! Foulen fouleni
+						</button>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-versions">
+							<li><a class="dropdown-item current" aria-current="true" href="#"><i class="fa fa-question-circle"></i> Aide</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Mon profil</a></li>
+							<li><a class="dropdown-item" href="#"><i class="fas fa-picture-o"></i> Image de profil</a></li>
+							<li><a class="dropdown-item" href="#"><i class="fas fa-list"></i> Mes inscriptions</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#"><i class="fas  fa-unlock"></i> Déconnecté</a></li>
+						</ul>
+					</div>
+
+					
+				</div>
+                 
+		  </div>
+		</div>
+</div>
+	
+	 
+  	
+  	  <div class="container-fluid">
+		<div class="row"> 
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="col-md-1 sidebar-left" style="padding-right:0px;">  
+				<div class="nav flex-column nav-tabs h-100"> 
+					 <a href="index.html" class="nav-link active" title="Tableau de bord"><i class="fa fa-graduation-cap h3"></i> <span class="hidden-tablet"></span></a> 	
+					 <a href="infrastructure.html" class="nav-link" title="Mes inscription"><i class="fas fa-address-card h3"></i> <span class="hidden-tablet"> </span></a> 
+					 <a href="messages.html" class="nav-link" title="Suivi de dossier"><i class="fas fa-dashboard h3"></i><span class="hidden-tablet"></span></a> 
+					 <a href="tasks.html" class="nav-link" title="Mes paiements"><i class="fas fa-dashboard h3"></i><span class="hidden-tablet"></span></a> 
+					 <a href="ui.html" class="nav-link" title="Mon CV"><i class="fas fa-dashboard h3"></i><span class="hidden-tablet"></span></a> 
+					 <a href="widgets.html" class="nav-link" title="UVT news"><i class="fas fa-newspaper-o h3"></i><span class="hidden-tablet"></span></a> 
+				</div>
+			</div>
+			<!-- end: Main Menu -->
+			
+			<div id="content" class="col-md-11 page-content" style="background-color: #fff;">  
+			<?php echo $this->content; ?>
+              
+			</div>
+  	 	</div> 
+	   </div> 
+  	 <div class="footer">
+
+		<div class="container">
+		<div class="row position-relative bottom-0">
+			<div class="col-md-12 col-sm-12">
+				<p class="float-left position-absolute end-0" style="bottom:5%;font-size:13px;">  
+						13 Rue Ibn Nadim, 1073 Montplaisir, Tunis <br>
+						Tél : +216 71 90 52 48 / +216 71 90 52 69 / +216 71 90 52 54 <br>
+						Fax : +216 71 90 36 03 
+				</p> 
+				<object data="<?=$this->basePath()?>/library/hyesuncss/images/footer.svg" type="image/svg+xml"></object>
+				<div class="ligne-bas"></div>
+		</div>
+		</div>
+		</div>
+  	</div>
+	
+  </body>
+</html>

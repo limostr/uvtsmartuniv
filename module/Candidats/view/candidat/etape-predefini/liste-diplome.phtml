@@ -1,0 +1,75 @@
+<div class="widget-box">
+    <div class="widget-title"><h5>Mon premier diplôme Cycle 1 (Licence, Maitrise,Technicien supérieur, préparatoir)</h5></div> 
+    <div class="container">  
+    <table class="table table-bordred">
+        <thead>
+            <tr>
+                <th>Diplôme</th>
+                <th>Année d'obtention</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($this->cycle1 as $cycle):?>
+            <tr>
+                <td><?=$cycle['diplome']?></td>
+                <td><?=$cycle['aneediplome']?></td>
+                <td></td>
+            </tr>
+            <?php endforeach;?>
+        </tbody> 
+    </table>
+   
+    </div>
+</div>
+
+
+
+<div class="widget-box">
+    <div class="widget-title"><h5>Mon deuxiéme diplôme Cycle 2 (Master, Ingénieur, )</h5></div> 
+    <div class="container">  
+    <table class="table table-bordred">
+        <thead>
+            <tr>
+                <th>Diplôme</th>
+                <th>Année d'obtention</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($this->cycle2 as $cycle):?>
+                <tr>
+                <td><?=$cycle['diplome']?></td>
+                <td><?=$cycle['aneediplome']?></td>
+                <td></td>
+            </tr>
+            <?php endforeach;?>
+        </tbody> 
+    </table>
+    </div>
+</div>
+
+
+<div class="widget-box">
+    <div class="widget-title"><h5>Mon troisiéme diplôme Cycle 3 (Doctorat )</h5></div> 
+    <div class="container">  
+    <table class="table table-bordred">
+        <thead>
+            <tr>
+                <th>Diplôme</th>
+                <th>Année d'obtention</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($this->cycle3 as $cycle):?>
+                <tr>
+                <td><?=$cycle['diplome']?></td>
+                <td><?=$cycle['aneediplome']?></td>
+                <td></td>
+            </tr>
+            <?php endforeach;?>
+        </tbody> 
+    </table>
+    </div>
+</div>

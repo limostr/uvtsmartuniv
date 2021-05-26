@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example formBuilder</title>
+</head>
+<body>
+<button id="getJSON" type="button">Get Json Code</button>
+
+<button id="setJSON" type="button">Set Json Code</button>
+	<div id="codeform">
+  
+  
+  </div>
+  <div id="fb-editor"></div>
+  <script src="jquery.min.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script src="form-builder.min.js"></script>
+  <script>
+  /*jQuery(function($) {
+    $(document.getElementById('fb-editor')).formBuilder();
+  });*/
+  var fbEditor = document.getElementById('fb-editor');
+	var formBuilder = $(fbEditor).formBuilder();
+ 
+
+  document.getElementById('getJSON').addEventListener('click', function() {
+	  console.log(formBuilder.actions.getData());
+	document.getElementById('codeform').innerHTML  =formBuilder.actions.getData('json', true);
+    //alert(formBuilder.actions.getData('json', true));
+	});
+	
+ document.getElementById('setJSON').addEventListener('click', function() { 
+	  formBuilder.actions.setData(document.getElementById('codeform').innerHTML  ); 
+	});
+  
+
+  </script>
+  
+	
+</body>
+</html>

@@ -1,0 +1,40 @@
+<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Liste des Contextes</h3>
+                
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body"> 
+                <table class="table table-bordred">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Contexte</th> 
+                        <th>Contexte</th>
+                        <th>Lien</th>
+                        <th></th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->ListeContexte as $Contexte):?>
+                            <tr>
+                            <td id='ressources_<?=$Contexte->getIdcontexte()?>'><?=$Contexte->getIdcontexte()?></td>
+                            <td><?=$Contexte->getLabelcontextecategorie()?></td> 
+                            <td><?=$Contexte->getLabelcontexte()?></td> 
+                            <td><?=$Contexte->getContextmodule()?>/<?=$Contexte->getContextcontroller()?>/<?=$Contexte->getContextaction()?></td>
+                            <td><button type="button" onclick="deletedata('<?=$this->url('contexte/actions-contexte-delete',['id'=>$Contexte->getIdcontexte()])?>','contexte_<?=$Contexte->getIdcontexte()?>','<?=$this->url('contexte/action-contexte-lister',['categorie'=>$this->categorie_id])?>','content_ajax')" class="btn btn-flat btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+
+                            </tr>
+
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+                <?= $this->paginationControl(
+                    $this->ListeContexte,
+                    'sliding',         
+                    'partial/paginator-ajax',
+                    ['route' => 'contexte/action-contexte-lister'
+                    ,'params'=>['categorie'=>$this->categorie_id]]
+                );?>
+        </div>
+</div>

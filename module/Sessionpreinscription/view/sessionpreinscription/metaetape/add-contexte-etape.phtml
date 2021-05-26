@@ -1,0 +1,84 @@
+<?php
+
+$title =  $this->translate('Contextes'); # page title
+# meta keywords
+$this->headMeta()->appendName('keywords', 'Definition contexte,  Contexte');
+# meta description
+$this->headMeta()->appendName('description', 'Ajout/mise a jour de Contexte');
+# page title
+$this->headTitle($this->escapeHtml($title));
+
+
+#form
+$form = $this->form;
+$form->setAttribute('action', $this->url('etapes/actions-session-Meta-etape-contexte-save',['id',$this->id]));  #oops
+$form->prepare();
+
+?> 
+ 
+ 
+ 
+<div class="card card-primary">
+	<div class="card-header">
+	<h3 class="card-title">Ajouter contexte</h3>
+	</div>
+	<div class="card-body"> 
+  
+	<div id="message_contexte"></div>
+	<?= $this->form()->openTag($form); ?> 
+    <?= $this->formSubmit($form->get('create')); ?>
+    <!-- add the module input field -->
+    <div class="mb-3">
+        <?php $this->formLabel($form->get('idcontextemetaetape')); ?>
+        <div class="form-group">
+            <?= $this->formText($form->get('idcontextemetaetape')); ?> 
+        </div> 
+        <div class="text-danger"> 
+                <?= $this->formElementErrors($form->get('idcontextemetaetape')); ?>  
+        </div>
+    </div>	
+    <div class="mb-3">
+        <?php $this->formLabel($form->get('labelcontextemetaetape')); ?>
+        <div class="form-group">
+            <?= $this->formText($form->get('labelcontextemetaetape')); ?> 
+        </div> 
+        <div class="text-danger"> 
+                <?= $this->formElementErrors($form->get('labelcontextemetaetape')); ?>  
+        </div>
+    </div>	
+    <div class="mb-3">
+            <?php $this->formLabel($form->get('idcontextecategorie')); ?>
+        <div class="form-group">
+            <?= $this->formSelect($form->get('idcontextecategorie')); ?>
+        </div>
+        
+        <div class="text-danger">
+            <?= $this->formElementErrors($form->get('idcontextecategorie')); ?>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <?= $this->formLabel($form->get('desccontextemetaetape')); ?>
+        <div class="input-group">
+            <?= $this->formTextarea($form->get('desccontextemetaetape')); ?>
+        </div>
+
+        <div class="text-danger">
+            <?= $this->formElementErrors($form->get('desccontextemetaetape')); ?>
+        </div> 
+    </div>
+	<!-- submit button -->
+	<div class="mb-3 float-right">  
+		<?= $this->formHidden($form->get('csrf')); ?>
+		<div class="text-danger">
+			<?= $this->formElementErrors($form->get('csrf')); ?>
+		</div>
+	
+	</div> 
+  <div id="fb-editor"></div>
+  
+
+	<?= $this->form()->closeTag(); ?>
+  
+ </div>
+ </div>

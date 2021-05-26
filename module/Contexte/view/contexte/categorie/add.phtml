@@ -1,0 +1,86 @@
+<?php
+
+$title =  $this->translate('Ajout/Mise a jour des contextes'); # page title
+# meta keywords
+$this->headMeta()->appendName('keywords', 'contexte, System');
+# meta description
+$this->headMeta()->appendName('description', 'Ajout/Mise a  jour des catégorie de contexte');
+# page title
+$this->headTitle($this->escapeHtml($title));
+
+
+#form
+$form = $this->form;
+$form->setAttribute('action', $this->url('contexte/actions-categorie-save',['id',$this->id]));  #Edition save
+$form->prepare();
+
+?>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function(){
+
+			AjaxFormAccessAjaxReload("new_Categorie","message_categorie",'<?=$this->url('contexte/actions-gestion-contexte')?>',[],'content_ajax',true);
+        }
+    );
+
+	// //access_module_id, moduleroute, module_name, module_descrept, module_afficher, templateattruibute
+
+</script>
+</script>
+ <div class="card card-primary">
+	 
+	<div class="card-body"> 
+ 	 
+	<div id="message_categorie"></div>
+	<?= $this->form()->openTag($form); ?>  
+
+	<div class="mb-3">
+            <?php $this->formLabel($form->get('idcontextecategorie')); ?>
+            <div class="form-group">
+                <?= $this->formText($form->get('idcontextecategorie')); ?> 
+            </div> 
+            <div class="text-danger"> 
+                    <?= $this->formElementErrors($form->get('idcontextecategorie')); ?>  
+            </div>
+        </div>	 
+       <!-- add the module input field -->
+        <div class="mb-3">
+            <?php $this->formLabel($form->get('labelcontextecategorie')); ?>
+            <div class="form-group">
+                <?= $this->formText($form->get('labelcontextecategorie')); ?> 
+            </div> 
+            <div class="text-danger"> 
+                    <?= $this->formElementErrors($form->get('labelcontextecategorie')); ?>  
+            </div>
+        </div>
+
+	 
+ 
+     <!--   resources_descrept text field -->
+    <div class="mb-3">
+				<?= $this->formLabel($form->get('desccontextecategorie')); ?>
+				<div class="input-group">
+					<?= $this->formTextarea($form->get('desccontextecategorie')); ?>
+				</div>
+
+				<div class="text-danger">
+					<?= $this->formElementErrors($form->get('desccontextecategorie')); ?>
+				</div>
+
+			</div>
+	<!-- submit button -->
+	<div class="mb-3 float-right">
+ 
+		<?= $this->formHidden($form->get('csrf')); ?>
+		<div class="text-danger">
+			<?= $this->formElementErrors($form->get('csrf')); ?>
+		</div>
+		<?= $this->formSubmit($form->get('create')); ?>
+	</div>
+
+	<?= $this->form()->closeTag(); ?>
+   
+ </div>
+ </div>

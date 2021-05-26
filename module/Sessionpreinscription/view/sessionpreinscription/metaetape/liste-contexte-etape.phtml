@@ -1,0 +1,33 @@
+<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Liste des Contextes etapes</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body"> 
+                <table class="table table-bordred">
+                    <thead>
+                    <tr>
+                        <th>ID</th> 
+                        <th>Contexte Etape</th> 
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->ListeEtapes as $etape):?>
+                            <tr>
+                            <td><?=$etape->getIdcontextemetaetape()?></td>
+                            <td><?=$etape->getLabelcontextemetaetape()?></td> 
+                            </tr>
+
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+                <?= $this->paginationControl(
+                    $this->ListeEtapes,
+                    'sliding',         
+                    'partial/paginator',
+                    ['route' => 'etapes/actions-session-Meta-etape-contexte-lister',
+                    'params'=>['categorie'=>$this->categorie_id] 
+                    ]
+                );?>
+        </div>
+</div>

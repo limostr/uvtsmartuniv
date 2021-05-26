@@ -1,0 +1,52 @@
+<?php   
+ $option= "<option value=''></option>";
+	for($i=1978;$i<=date("Y");$i++){
+		$date= $i.'-'.($i+1);
+		$option.= "<option value=$date>$date</option>";
+	} 
+?>	
+
+<?php   
+ $option= "<option value=''></option>";
+	for($i=1978;$i<=date("Y");$i++){
+		$date= $i.'-'.($i+1);
+		$option.= "<option value=$date>$date</option>";
+	} 
+?>	
+
+
+<?php for($i=1;$i<=$this->nbr;$i++):?>
+<hr>
+<div class="row"> 
+        <div class="input-group flex-nowrap col">
+            <span class="input-group-text d-sm-none d-md-block" id="addon-wrapping"><i class="fab fa-creative-commons-nd"></i></span>
+            <input type="text" class="form-control" placeholder="Niveau*" name="niveau[]" aria-label="Niveau" aria-describedby="addon-wrapping" value="Niveau <?=$i?>"> 
+        </div>   
+        <div class="input-group col">
+            <span class="input-group-text d-sm-none d-md-block" id="inputGroupSelect03_<?=$this->niveau?>"><i class="far fa-calendar-alt"></i></span> 
+            <select class="form-select" id="inputGroupSelect03_<?=$this->niveau?>" name="annee[]">
+                <option selected> Année d'obtention...</option> 
+            </select> 
+        </div> 
+        <div class="input-group col">
+            <span class="input-group-text d-sm-none d-md-block" id="addon-wrapping"><i class="fas fa-glasses"></i></span> 
+            <select class="form-select" id="inputGroupSelect05" name="session[]">
+                <option selected>Session...</option> 
+            </select>
+            
+        </div> 
+        <div class="input-group flex-nowrap col">
+            <span class="input-group-text d-sm-none d-md-block" id="addon-wrapping"><i class="fab fa-creative-commons-nd"></i></span>
+            <input type="text" class="form-control" placeholder="Moyenne*" name="moyenne[]" aria-label="Moyenne" aria-describedby="addon-wrapping"> 
+        </div> 
+        <div class="input-group flex-nowrap col">
+            <span class="input-group-text d-sm-none d-md-block" id="addon-wrapping"><i class="fab fa-creative-commons-nd"></i></span>
+            <input type="text" class="form-control" placeholder="Credit*" name="credit[]" id="credit[]" aria-label="Credit" aria-describedby="addon-wrapping">
+            <button class="btn btn2 btn-outline-secondary btn-info d-sm-none d-md-block" type="button" >?</button>
+        </div>   
+        <div class="input-group flex-nowrap col">
+                <span class="input-group-text d-sm-none d-md-block" id="addon-wrapping"><i class="fas fa-file-alt"></i></span>
+                <input type="file" class="form-control" placeholder="Diplôme*" name="file[]" aria-label="relever" aria-describedby="addon-wrapping"> 
+        </div>
+</div> 
+<?php endfor;?>

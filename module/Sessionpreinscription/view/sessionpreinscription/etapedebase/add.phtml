@@ -1,0 +1,119 @@
+<?php
+
+$title =  $this->translate('Contextes'); # page title
+# meta keywords
+$this->headMeta()->appendName('keywords', 'Definition contexte,  Contexte');
+# meta description
+$this->headMeta()->appendName('description', 'Ajout/mise a jour de Contexte');
+# page title
+$this->headTitle($this->escapeHtml($title));
+
+
+#form
+$form = $this->form;
+$form->setAttribute('action', $this->url('contexte/actions-contexte-structure-save',['id',$this->id]));  #oops
+$form->prepare();
+
+?> 
+ <script src="<?=$this->basePath()?>/jslib/formbuilder/form-builder.min.js"></script> 
+
+ 
+ 
+<div class="card card-primary">
+	<div class="card-header">
+	<h3 class="card-title">Ajouter contexte</h3>
+	</div>
+	<div class="card-body"> 
+  
+	<div id="message_contexte"></div>
+	<?= $this->form()->openTag($form); ?> 
+    <?= $this->formSubmit($form->get('create')); ?>
+    <!-- add the module input field -->
+    <div class="mb-3">
+        <?php $this->formLabel($form->get('idetapedebase')); ?>
+        <div class="form-group">
+            <?= $this->formText($form->get('idetapedebase')); ?> 
+        </div> 
+        <div class="text-danger"> 
+                <?= $this->formElementErrors($form->get('idetapedebase')); ?>  
+        </div>
+    </div>	
+    <div class="mb-3">
+        <?php $this->formLabel($form->get('labeletapebase')); ?>
+        <div class="form-group">
+            <?= $this->formText($form->get('labeletapebase')); ?> 
+        </div> 
+        <div class="text-danger"> 
+                <?= $this->formElementErrors($form->get('labeletapebase')); ?>  
+        </div>
+    </div>	
+    <div class="mb-3">
+        <?php $this->formLabel($form->get('linkstatic')); ?>
+        <div class="form-group">
+            <?= $this->formText($form->get('linkstatic')); ?> 
+        </div> 
+        <div class="text-danger"> 
+                <?= $this->formElementErrors($form->get('linkstatic')); ?>  
+        </div>
+    </div>	
+
+
+    <div class="mb-3">
+        <?=$this->formLabel($form->get('dynamiqueetape')); ?>
+        <div class="form-group">
+            <?= $this->formCheckbox($form->get('dynamiqueetape')); ?> 
+        </div> 
+        <div class="text-danger"> 
+                <?= $this->formElementErrors($form->get('dynamiqueetape')); ?>  
+        </div>
+    </div> 
+
+
+    <div class="mb-3">
+            <?php $this->formLabel($form->get('idcontexte')); ?>
+        <div class="form-group">
+            <?= $this->formSelect($form->get('idcontexte')); ?>
+        </div>
+        
+        <div class="text-danger">
+            <?= $this->formElementErrors($form->get('idcontexte')); ?>
+        </div>
+    </div>
+    <div class="mb-3">
+        <?= $this->formLabel($form->get('contenueetape')); ?>
+        <div class="input-group">
+            <?= $this->formTextarea($form->get('contenueetape')); ?>
+        </div>
+
+        <div class="text-danger">
+            <?= $this->formElementErrors($form->get('contenueetape')); ?>
+        </div> 
+    </div>
+
+
+
+    <div class="mb-3">
+        <?= $this->formLabel($form->get('description')); ?>
+        <div class="input-group">
+            <?= $this->formTextarea($form->get('description')); ?>
+        </div>
+
+        <div class="text-danger">
+            <?= $this->formElementErrors($form->get('description')); ?>
+        </div> 
+    </div>
+	<!-- submit button -->
+	<div class="mb-3 float-right">  
+		<?= $this->formHidden($form->get('csrf')); ?>
+		<div class="text-danger">
+			<?= $this->formElementErrors($form->get('csrf')); ?>
+		</div>
+	
+	</div> 
+  <div id="fb-editor"></div>
+  
+
+	<?= $this->form()->closeTag(); ?>
+  
+ </div>
+ </div>

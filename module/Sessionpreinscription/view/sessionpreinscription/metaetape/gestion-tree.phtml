@@ -1,0 +1,70 @@
+ 
+<script type="text/javascript"> 
+
+
+$(function(){ 
+
+
+	$("#tree").fancytree({
+	    source: {
+	            url: "<?=$this->url("etapes/actions-session-etape-tree")?>"
+	    },
+	    lazyload: function(e, data){
+	 
+	            data.result = $.ajax({
+	                    url: "<?=$this->url("etapes/actions-session-etape-tree")?>",
+	                    dataType: "json"
+	            });
+	    },
+	    click: function(event, data) {
+           
+	    	$("#selectedformation").html(data.node.tooltip);
+
+	    	var keydata=data.node.key;
+			console.log(keydata);
+		//	alert(keydata);
+		var keysplit=keydata.split("_");
+		var url="<?=$this->url('etapes/actions-session-Meta-etape-contexte-gestion')?>";
+			if(keysplit[0]=="MetatEtapePre"){
+				url="<?=$this->url('etapes/actions-session-Meta-etape-contexte-add')?>/"+keysplit[1];
+			}else if(keysplit[0]=="Contexte"){
+				  url="<?=$this->url('etapes/actions-session-Meta-etape-contexte-modifier')?>/"+keysplit[2]+"/"+keysplit[1];
+			}else if(keysplit[0]=="Categorie"){
+				  url="<?=$this->url('etapes/actions-session-Meta-etape-contexte-gestion')?>/"+keysplit[1];
+			}  
+			 
+	    	$.ajax({
+	    		type:"POST",
+	    		url:url , 
+	    		data:{
+	    			niveau:data.node.key 
+		    		,anneescolaire:1
+		    		},
+	    		beforeSend :function(){ 
+	    			 $('#content_ajax').html("Encours...");
+	    		    },
+	    		success:function(response){ 
+	    	    	$('#content_ajax').html(response); 
+	    		}
+	    	});	 
+		 	
+             
+    	}
+	});
+  
+	});
+ 
+
+
+
+</script>
+
+<div class="row">
+    <div class="col-md-3" id="tree"></div>
+    <div class="col-md-9"> 
+        <div class="row">
+            <div class="col-md-12"  id="content_ajax"></div>
+        </div>
+
+    </div>
+</div> 

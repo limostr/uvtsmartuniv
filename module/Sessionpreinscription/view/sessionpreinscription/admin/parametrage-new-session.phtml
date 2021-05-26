@@ -1,0 +1,31 @@
+<script type="text/javascript">
+	 
+
+	AjaxLoader('<?=$this->url('session/action-session-add',['id'=>$this->id])?>', 'ajax','div_niv_content');
+	
+</script>
+<div class="col-md-12">
+<div class="row"> 
+	<div class="col-md-12">
+	<nav class="navbar navbar-expand navbar-orange navbar-dark">
+			 
+				<ul class="navbar-nav" id="myTab">
+				<a class="nav-link"  href="#" role="button"><i class="fas fa-bars"></i></a>
+	               
+				<li class="nav-item">
+					<a href="#" class="nav-link" onclick="AjaxLoader('<?=$this->url('session/action-session-add',['id'=>$this->id])?>', 'ajax','div_niv_content')">Session</a>
+				</li> 
+				<li class="nav-item">
+					<a href="#" class="nav-link" onclick="AjaxLoader('<?=$this->url('session/action-session-add',['id'=>$this->id])?>', 'ajax','div_niv_content')">Liste des session</a>
+				</li> 
+					 	 
+	            </ul>
+		 
+		</div>  
+	 	</div> 
+
+<div class="row">  
+	<div class="col-md-12" id="div_niv_content"> </div> 
+</div>
+
+</div>

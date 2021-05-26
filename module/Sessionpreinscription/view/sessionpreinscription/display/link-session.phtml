@@ -1,0 +1,105 @@
+ 
+<div class="row">
+	<div class="col-md-12" id="div_niv_content">
+		 
+ <?php 
+ 
+	$sessionPlanPay =$this->PlaningPayementTable;
+ ?>
+<table class="table table-bordred">
+	<thead>
+		<tr>
+			<th style="background-color: #ffd78c;width:1%;">ID </th>
+			 
+			<!--th style="width:25%;" colspan=2>Formation </th-->
+			<th style="width:25%;">Titre Session </th>
+			<th style="width:5%;">Date </th> 
+			<th style="width:5%;">Link</th> 
+			<th style="width:15%;">Plan Pay</th>
+			<th style="width:2%;">Activer </th>
+			<th style="width:2%;">Actions </th>
+		</tr>
+	</thead>
+	
+	<tbody>
+	<?php  foreach ($this->sessionliste as $item):?>
+	
+		<tr>
+			  <td style=" background-color: #ffd78c;"><?=$item['idsessionpreinscription']?></td>
+			
+			<!--th><?=$item['label']?> <?=$item['abrev']?></th>
+			<td><?=$item['Label']?></td-->
+			<td><b><?=$item['titresession']?></b></td>
+			<td>De <b style="color:green;"><?=date("d/m/Y",strtotime($item['datedebut']))?></b> à <b style="color:red;"><?=date("d/m/Y",strtotime($item['datefin']))?></b></td>
+ 
+			<td>
+				<a target="_blank" style="color:blue;"href="http://www.uvt.rnu.tn/candidature/?formation=<?=$item['levelformation']?>-<?=$item['abrev']?>-<?=$item['idsessionpreinscription']?>">
+					www.uvt.rnu.tn/candidature/?formation=<?=$item['levelformation']?>-<?=$item['abrev']?>-<?=$item['idsessionpreinscription']?>
+				</a>
+			</td>
+			<td>
+		
+		
+				<?php 
+				
+					$PayPlan=$sessionPlanPay->getpayement($item['idsessionpreinscription']);
+					if(!empty($PayPlan)):		
+				?>
+				<?php foreach($PayPlan as $pay): ?>
+				 <?php
+					$str="Debut : ".date("d/m/Y",strtotime($pay['datedebut']))."\n";
+					foreach($pay['facture'] as $fact){
+						$str.=$fact['label']."\n";
+						$str.=$fact['totalapays']."\n";
+					}
+					
+					$str.="Fin : ".date("d/m/Y",strtotime($pay['datefin']))."\n";
+				 ?>
+				 <table title="<?=$str?>">
+				 <tr>
+					<td><?=(date("Ymd" ,strtotime($pay['datefin'])) > date("Ymd")) ? "<b style='color:green;'>Ouvert</b>" :"<b  style='color:red;'>Fermé</b>" ?></td>
+				 <tr>
+				 <?php if(date("Ymd" ,strtotime($pay['datefin'])) > date("Ymd")): ?>
+					<tr>
+						<td style='color:green;'>Deb.: <?=date("d/m/Y",strtotime($pay['datedebut']))?></td>
+					 </tr>
+					 <tr>
+						<td style='color:green;background:#cce5ff;'><b>Fin: <?=date("d/m/Y",strtotime($pay['datefin']))?></b></td>
+					 </tr>
+				 <?php else :?>
+					 <tr>
+						<td  style='color:red;'>Deb.: <?=date("d/m/Y",strtotime($pay['datedebut']))?></td>
+					 </tr>
+					 <tr>
+						<td  style='color:red;'>Fin: <?=date("d/m/Y",strtotime($pay['datefin']))?></td>
+					 </tr>
+				 <?php endif;?>
+				 </table>
+				  
+				<?php endforeach?>
+	<?php endif;?>
+			</td>
+			
+			<td style=" background-color: #ffd78c;">
+				<a id="activbt_<?=$item['idsessionpreinscription']?>"   href="#" onclick="AjaxLoading('<?=$this->url('session/action-session-activer');?>',<?=$item['idsessionpreinscription']?>,'activbt_<?=$item['idsessionpreinscription']?>')">
+					 
+						<?php if($item['activation']==1):?> 
+				   			 <span class= "badge badge-success" title= "Activer"><i class="icon-eye-open icon-white"></i></span>   
+				   		<?php else : ?>
+				   			 <span class= "badge badge-important" title= "Activer"><i class="icon-eye-close icon-white"></i></span> 
+				   		<?php endif;?> 
+				</a>
+				<!-- icon-ok-circle -->
+		  </td>
+		  <td>
+ 				<span class="badge badge-important" title="Modifier la session de formation"><a href="#" onclick=""><i class="icon-pencil icon-white"></i></a></span>
+			</td>
+		</tr>
+		<?php endforeach;?>	
+			 
+		
+	</tbody>
+</table>
+	</div>
+	
+</div>

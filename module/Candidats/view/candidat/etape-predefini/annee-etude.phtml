@@ -1,0 +1,56 @@
+
+<script>
+    function AjouterLesAnnees(nombreAnnee){
+     
+        $.ajax({
+            type:"POST",
+            url: "<?=$this->url('etapes-preinscription/actions-annee-line')?>/"+nombreAnnee,
+            beforeSend :function(){ 
+                $('#lesAnnees').html("Encours...");
+                },
+            success:function(response){
+                
+                if (response){
+                    
+                    $('#lesAnnees').html(response);
+                }
+            }
+        });
+       
+    }
+</script>
+ 
+
+<h5>Relevés des notes de toutes les années d'études (y compris les années de redoublement)</h5>
+ 
+<div class="row">
+    <div class="input-group col">
+        <span class="input-group-text d-sm-none d-xs-none d-md-block" id="addon-wrapping"><i class="fa fa-graduation-cap"></i></span>
+        <label class="input-group-text d-sm-none d-xs-none d-md-block" for="inputGroupSelect01">Nombre d'années d'études: </label>
+        <select class="form-select" id="nbranneeetude" aria-describedby="inputGroupSelect01" onchange="AjouterLesAnnees(this.value);">
+            <option selected>Nombre d'années d'études...</option> 
+                <option value=''></option>
+                <option value='1'>1 <?=("année")?></option>
+                <option value='2'>2 ans</option>
+                <option value='5'>5 semestres (2.5 ans)</option>
+                <option value='3'>3 ans</option>
+                <option value='4'>4 ans</option>
+                <option value='5'>5 ans</option>
+                <option value='6'>6 ans</option>
+                <option value='7'>7 ans</option>
+                <option value='8'>8 ans</option>
+                <option value='9'>9 ans</option>
+                <option value='10'>10 ans</option>
+                <option value='11'>11 ans</option>
+                <option value='12'>12 ans</option>
+        </select>
+        <button class="btn btn2 btn-outline-secondary btn-info d-sm-none d-md-block" type="button"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Type de diplôme Licence/Master/Ingénieur...">?</button>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col" id="lesAnnees">
+        
+    </div>
+</div>

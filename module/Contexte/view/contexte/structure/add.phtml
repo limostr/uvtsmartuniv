@@ -1,0 +1,135 @@
+<?php
+
+$title =  $this->translate('Contextes'); # page title
+# meta keywords
+$this->headMeta()->appendName('keywords', 'Definition contexte,  Contexte');
+# meta description
+$this->headMeta()->appendName('description', 'Ajout/mise a jour de Contexte');
+# page title
+$this->headTitle($this->escapeHtml($title));
+
+
+#form
+$form = $this->form;
+$form->setAttribute('action', $this->url('contexte/actions-contexte-structure-save',['id',$this->id]));  #oops
+$form->prepare();
+
+?> 
+ <script src="<?=$this->basePath()?>/jslib/formbuilder/form-builder.min.js"></script> 
+
+
+
+ 
+<div class="card card-primary">
+	<div class="card-header">
+	<h3 class="card-title">Ajouter contexte</h3>
+	</div>
+	<div class="card-body"> 
+  
+	<div id="message_contexte"></div>
+	<?= $this->form()->openTag($form); ?> 
+    <?= $this->formSubmit($form->get('create')); ?>
+    <!-- add the module input field -->
+    <div class="mb-3">
+        <?php $this->formLabel($form->get('labelstructurecontexte')); ?>
+        <div class="form-group">
+            <?= $this->formText($form->get('labelstructurecontexte')); ?> 
+        </div> 
+        <div class="text-danger"> 
+                <?= $this->formElementErrors($form->get('labelstructurecontexte')); ?>  
+        </div>
+    </div>	
+ 
+
+     <!--   idaccessmode select field -->
+    <div class="mb-3">
+            <?php $this->formLabel($form->get('idcontexte')); ?>
+        <div class="form-group">
+            <?= $this->formSelect($form->get('idcontexte')); ?>
+        </div>
+        
+        <div class="text-danger">
+            <?= $this->formElementErrors($form->get('idcontexte')); ?>
+        </div>
+    </div>
+  
+	<!-- submit button -->
+	<div class="mb-3 float-right">
+    
+    <?= $this->formHidden($form->get('formstructur')); ?>
+    <?= $this->formHidden($form->get('idstructure')); ?>
+		<?= $this->formHidden($form->get('csrf')); ?>
+		<div class="text-danger">
+			<?= $this->formElementErrors($form->get('csrf')); ?>
+		</div>
+	
+	</div> 
+  <div id="fb-editor"></div>
+ 
+  <script type="text/javascript">
+   
+   var fbEditor = document.getElementById('fb-editor');
+	       
+    $(document).ready(
+        function(){  
+
+           
+            <?php if(!empty($this->id)):?> 
+                var options = {
+                    dataType: 'json',
+                    formData: $("input[name='formstructur'").val()
+                };
+                var formBuilder = $(fbEditor).formBuilder(options);  
+                <?php else:?>
+                    var formBuilder = $(fbEditor).formBuilder();  
+            <?php endif;?>
+   
+            $('#new_Structure').validationEngine();
+            var optformformation = { 
+                beforeSerialize: function($form, options)  {   
+                    $("input[name='formstructur'").val(formBuilder.actions.getData('json', true));   
+                },
+                beforeSend: function()  {   },
+                uploadProgress: function(event, position, total, percentComplete) { },
+                success: function() { },
+                complete: function(response)
+                {
+                    var obj = JSON.parse(response.responseText);
+                    if(obj.status=="success"){
+                        $("#message_contexte" ).html("<div class='alert alert-success'>"
+                            +"<button type='button' class='close' data-dismiss='alert'>X</button>"
+                            +"<h4 class='alert-heading'>Success d'insertion des données</h4>"
+                            +"<p> "+obj.status
+                            +" </p> </div>"); 
+                    }else{
+
+                        $("#message_contexte" ).html("<div class='alert alert-block alert-error fade in'>"
+                            +"<button type='button' class='close' data-dismiss='alert'>X</button>"
+                            +"<h4 class='alert-heading'>Erreur d'insertion des données</h4>"
+                            +"<p> "+obj.message
+                            +" </p> </div>");  
+                    }
+
+                },
+                error: function(response)
+                {
+                    var obj = JSON.parse(response.responseText);
+                    $("#"+idmsgereur).html("<div class='alert alert-block alert-error fade in'>"
+                        +"<button type='button' class='close' data-dismiss='alert'>X</button>"
+                        +"<h4 class='alert-heading'>Erreur d'insertion des données</h4>"
+                        +"<p> "+obj.message
+                        +" </p> </div>");
+
+                }
+
+            };
+            $("#new_Structure").ajaxForm(optformformation);
+
+         }
+    );
+</script>
+
+	<?= $this->form()->closeTag(); ?>
+  
+ </div>
+ </div>

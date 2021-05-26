@@ -1,0 +1,106 @@
+<div class="widget-box">
+    <div class="widget-title"><h5>Mes Informations </h5></div> 
+    <div class="container">  
+        <div class="row">
+        </div>
+    </div>
+</div>
+
+
+<div class="steps clearfix">
+    <ul role="tablist">
+        <li role="tab" aria-disabled="false" class="step-element first current" aria-selected="true">
+            <a id="form-total-t-0" href="#form-total-h-0" aria-controls="form-total-p-0">
+                <span class="current-info audible"></span>
+                <div class="title">
+                    <p class="step-icon"><span>1</span></p>
+                    <span class="step-text">Personal Info</span>
+                </div> 
+            </a> 
+        </li>
+        <li class="nextlabel"></li>
+        <li role="tab" aria-disabled="false" class="step-element">
+            <a id="form-total-t-1" href="#form-total-h-1" aria-controls="form-total-p-1">
+                <div class="title">
+                    <p class="step-icon"><span>2</span></p>
+                    <span class="step-text">Booking</span>
+                </div>
+            </a>
+        </li>
+        <li class="nextlabel"></li>
+        <li role="tab" aria-disabled="false" class="step-element">
+            <a id="form-total-t-2" href="#form-total-h-2" aria-controls="form-total-p-2">
+                <div class="title">
+                    <p class="step-icon"><span>3</span></p>
+                    <span class="step-text">Confirm</span>
+                </div>
+                </a>
+        </li>
+        <li class="nextlabel"></li>
+        <li role="tab" aria-disabled="false" class="step-element">
+            <a id="form-total-t-2" href="#form-total-h-3" aria-controls="form-total-p-2">
+                <div class="title">
+                    <p class="step-icon"><span>3</span></p>
+                    <span class="step-text">Confirm</span>
+                </div>
+            </a>
+        </li>
+        <li class="nextlabel"></li>
+        <li role="tab" aria-disabled="false" class="step-element last" >
+            <a id="form-total-t-2" href="#form-total-h-4" aria-controls="form-total-p-2">
+                <div class="title">
+                    <p class="step-icon"><span>3</span></p>
+                    <span class="step-text">Confirm</span>
+                </div>
+                </a>
+        </li>
+    </ul>
+</div>
+
+<table class="table table-bordred  table-except">
+    <thead>
+        <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>aaaaaaaaa</td>
+        <td><label class="container-checkbox">
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label></td>
+        </tr>
+        <tr>
+        <td>aaaaaaaaa</td>
+        <td><label class="container-checkbox">
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label></td>
+        </tr>
+        <tr>
+        <td>aaaaaaaaa</td>
+        <td><label class="container-checkbox">
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label></td>
+        </tr>
+        <tr>
+        <td>aaaaaaaaa</td>
+        <td><label class="container-checkbox">
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label></td>
+        </tr>
+    </tbody>
+
+</table>
+
+<button type="button" class="btn btn-flat btn-labeled btn-next">
+    Etape suivante <span class="btn-label"><i class="fa fa-caret-right"></i></span>
+</button>
+
+ 
+
+

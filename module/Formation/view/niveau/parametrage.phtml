@@ -1,0 +1,48 @@
+<script type="text/javascript">  
+	AjaxLoader('<?=$this->url('session/action-session-add',['id'=>$this->id])?>', 'ajax','div_niv_content'); 
+</script>
+<div class="col-md-12">
+<div class="row"> 
+	<div class="col-md-12">
+	<nav class="navbar navbar-expand navbar-orange navbar-dark">
+			 
+				<ul class="navbar-nav" id="myTab">
+				<a class="nav-link"  href="#" role="button"><i class="fas fa-bars"></i></a>
+	               
+				<li class="nav-item">
+					<a href="#" class="nav-link" onclick="AjaxLoader('<?=$this->url('session/action-session-add',['id'=>$this->id])?>', 'ajax','div_niv_content')">Session</a>
+				</li>
+				   <li class="nav-item dropdown show">
+						<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="nav-link dropdown-toggle">Dossier papier</a>
+						<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
+						<li><a href="#" class="dropdown-item">Defenir un document</a></li>
+						<li><a href="#" class="dropdown-item">Liste des document</a></li>
+						</ul>
+					</li>  
+
+					<li class="nav-item dropdown show">
+						<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="nav-link dropdown-toggle">Planing de paiement</a>
+						<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
+						<li><a href="#" class="dropdown-item">Calendrier</a></li>
+						<li><a href="#" class="dropdown-item">Gestion des planing de paiement</a></li>
+						</ul>
+					</li> 
+	               
+					<li class="nav-item dropdown show">
+						<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="nav-link dropdown-toggle">Responsable</a>
+						<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
+						<li><a href="#" class="dropdown-item">Liste des responsables</a></li>
+						<li><a href="#" class="dropdown-item">Ajouter un responsable</a></li>
+						</ul>
+					</li> 
+					 
+	            </ul>
+		 
+		</div>  
+	 	</div> 
+
+<div class="row">  
+	<div class="col-md-12" id="div_niv_content"> </div> 
+</div>
+
+</div>

@@ -1,0 +1,69 @@
+<script type="text/javascript">
+	 
+
+	AjaxLoader('<?=$this->url('session/action-session-add',['idniv'=>$this->idniv,'idformation'=>$this->idformation])?>', 'ajax','div_niv_content');
+	
+</script>
+
+ 
+
+<div class="row">
+
+
+	<div class="col-md-12">
+			<div class="navbar">
+				<div class="navbar-inner">
+				<ul class="nav" id="myTab">
+	                 
+	               <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Session<b class="caret"></b></a>
+	                <ul class="dropdown-menu">
+	                   <li><a href="#" onclick="AjaxLoader('<?=$this->url('session/action-session-add',['idniv'=>$this->idniv,'idformation'=>$this->idformation])?>', 'ajax','div_niv_content')">Session</a></li>
+	                   <li><a href="#" onclick="AjaxLoader('<?=$this->url('finance/planing-paiement',['idsess'=>$this->idallsess])?>', 'ajax','div_niv_content')">Planing de payement</a></li>
+	                  
+	                   <li class="divider"> </li>
+	                   <li><a href="#" onclick="AjaxLoader('<?=$this->url('session/action-doc-session',['idsess'=>$this->idsess,'idformation'=>$this->idformation])?>', 'ajax','div_niv_content')">Document administrative</a></li>
+	                   <li><a href="#" onclick="AjaxLoader('<?=$this->url('session/action-doc-add',['idsess'=>$this->idsess,'idformation'=>$this->idformation])?>', 'ajax','div_niv_content')">Nouveau document administrative</a></li>
+	                 
+	                   </ul>
+	              </li>   
+	                
+	                <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Gestion des preinscript<b class="caret"></b></a>
+	                <ul class="dropdown-menu">
+	                  <li><a href="#" >Envoyer un mail</a></li>
+ 	                  <li class="divider"> </li>
+	                  <li><a href="#" onclick="AjaxLoader('<?=$this->url('session/inscrire-csv',['idniv'=>$this->idniv,'idformation'=>$this->idformation])?>', 'ajax','div_niv_content')">Ajouter des inscripts (CSV)</a></li>
+	                  <li><a href="#" >Ajouter un inscript</a></li>
+	                </ul>
+	              </li>  
+	                 
+	              <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion de scolarit&eacute; <b class="caret"></b></a>
+	                <ul class="dropdown-menu">
+	                	<li><a href="#" onclick="AjaxLoader('<?=$this->url(['session/responsable'],['idsess'=>$this->idsess])?>', 'ajax','div_niv_content')">Liste des responsables</a></li>
+	                 </ul>
+	              </li>
+				  
+				  <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pr&eacute;vision des groupes <b class="caret"></b></a>
+	                <ul class="dropdown-menu">
+	                	<li><a href="#" onclick="AjaxLoader('<?=$this->url('session/prevision-groupe',['idsess'=>$this->idsess])?>', 'ajax','div_niv_content')">Les groupes</a></li>
+	                 </ul>
+	              </li> 
+	            </ul>
+			</div>
+		</div>  
+	 	</div>
+	
+</div>
+
+<div class="row">
+
+
+	<div class="col-ms-12" id="div_niv_content">
+	
+	</div>
+	
+</div>
+

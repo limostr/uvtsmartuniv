@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+   
+    <meta name="dcterms.created" content="15 5 2013 11:26:49 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title></title>
+    
+    <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+	<?php $this->headLink() ->prependStylesheet($this->basePath().'/library/bootstrap5/dist/css/bootstrap.css'); ?>
+
+	<?php $this->headLink() ->prependStylesheet($this->basePath().'/library/bootstrap5/dist/css/bootstrap-responsive.min.css'); ?>
+
+	<?php $this->headLink() ->prependStylesheet($this->basePath().'/library/hyesuncss/style-add.css'); ?>
+ 
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+
+	<?php  $this->headScript()->appendFile($this->basePath().'/internet/oss.maxcdn.com/respond/1.4.2/respond.min.js');?> 
+	<?php  $this->headScript()->appendFile($this->basePath().'/internet/oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js');?> 
+	<?php $this->headLink() ->prependStylesheet($this->basePath().'/internet/code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'); ?>
+	<?php $this->headLink() ->prependStylesheet($this->basePath().'/internet/maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'); ?>
+	<?php echo $this->headLink(); ?>
+	<?php echo $this->headScript();?>
+	<script>
+ 
+  </script>
+ 
+	<style>
+	.nav-tabs.flex-column {
+		border-bottom: 0;
+		border-right: 0;
+	}
+	.h-100 {
+		height: 100% !important;
+	}
+.flex-column {
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+}
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+ 
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.nav-tabs.flex-column .nav-item.show .nav-link, .nav-tabs.flex-column .nav-link.active {
+    border-color: #dee2e6 transparent #dee2e6 #dee2e6;
+}
+.nav-tabs.flex-column .nav-link {
+     
+    border-top-right-radius: 0;
+    margin-right: -1px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent; 
+	min-height:80px;
+	display: flex;
+	justify-content: center;
+    align-items: center; 
+	
+}
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.navbar {
+    margin-bottom: 40px;
+}
+	</style>
+	
+  </head>
+  
+  <body>
+  
+ <div class="header"> 
+ 
+		<div class="navbar navbar-inner">
+			<div class="container-fluid">
+				 
+				<a class="navbar-brand" href="#"><span>
+					<object data="library/hyesuncss/images/logo.svg" type="image/svg+xml"></object>	
+				</span>
+				</a>
+                
+                <div class="d-flex">
+					<ul class="nav btn-group" style="width: auto; margin: 0px; float: right;">
+						<li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i></a></li>
+						<li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i><span class="label label-important">5</span> <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a class="sAdd" title="" href="#">Mes Message</a></li>
+								<li><a class="sInbox" title="" href="#">inbox</a></li>
+								<li><a class="sOutbox" title="" href="#">outbox</a></li>
+								<li><a class="sTrash" title="" href="#">trash</a></li>
+							</ul>
+					  </li>
+					 <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> </a></li>
+					 <li class="btn btn-inverse" style=" padding: 10px 15px; margin-top:5px; margin-right:-10px"><span class="text-login" ><div align="right">Bonjour!</br>Foulen fouleni</div></span></li>
+					 <li class="btn btn-inverse" style=" padding: 10px 15px;"><div id="avatar"> </div></li>
+					 <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> </a></li>
+                
+					</ul>
+				</div>
+                 
+		  </div>
+		</div>
+	</div>
+	
+	 
+  	
+  	  <div class="container-fluid">
+		<div class="row">
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="col-md-1">  
+				<div class="nav flex-column nav-tabs h-100"> 
+					 <a href="index.html" class="nav-link active"><i class="fa-icon-bar-chart"></i><span class="hidden-tablet">Tableau de bord</span></a> 	
+					 <a href="infrastructure.html" class="nav-link"><i class="fa-icon-hdd"></i><span class="hidden-tablet">Mes candidature</span></a> 
+					 <a href="messages.html" class="nav-link"><i class="fa-icon-envelope"></i><span class="hidden-tablet">Suivi de dossier</span></a> 
+					 <a href="tasks.html" class="nav-link"><i class="fa-icon-tasks"></i><span class="hidden-tablet">Mes paiement</span></a> 
+					 <a href="ui.html" class="nav-link"><i class="fa-icon-eye-open"></i><span class="hidden-tablet">Mon CV</span></a> 
+					 <a href="widgets.html" class="nav-link"><i class="fa-icon-dashboard"></i><span class="hidden-tablet">UVT news</span></a> 
+				</div>
+			</div>
+			<!-- end: Main Menu -->
+			
+			<div id="content" class="col-md-11">  
+			<?php echo $this->content; ?>
+              
+			</div>
+  	 </div> 
+     
+  	 <div class="footer">
+	<div class="container">
+	<div class="row position-relative bottom-0">
+		<div class="col-md-12 col-sm-12">
+			<p class="float-left position-absolute end-0" style="bottom:5%;font-size:13px;">  
+					13 Rue Ibn Nadim, 1073 Montplaisir, Tunis <br>
+					Tél : +216 71 90 52 48 / +216 71 90 52 69 / +216 71 90 52 54 <br>
+					Fax : +216 71 90 36 03 
+			</p> 
+			<object data="library/hyesuncss/images/footer.svg" type="image/svg+xml"></object>
+			<div class="ligne-bas"></div>
+	  </div>
+	  </div>
+	</div>
+  </div>
+	
+  </body>
+</html>

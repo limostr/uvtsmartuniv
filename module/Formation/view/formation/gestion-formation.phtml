@@ -1,0 +1,74 @@
+ 
+<script type="text/javascript"> 
+
+
+$(function(){ 
+
+
+	$("#tree").fancytree({
+	    source: {
+	            url: "<?=$this->url("formation/actions-formation-tree")?>"
+	    },
+	    lazyload: function(e, data){
+	 
+	            data.result = $.ajax({
+	                    url: "<?=$this->url("formation/actions-formation-tree")?>",
+	                    dataType: "json"
+	            });
+	    },
+	    click: function(event, data) {
+           
+	    	$("#selectedformation").html(data.node.tooltip);
+
+	    	var keydata=data.node.key;
+			console.log(keydata);
+		//	alert(keydata);
+		var keysplit=keydata.split("_");
+		var url="<?=$this->url('session/actions-display-linksession')?> ";
+			if(keysplit[0]=="NIV"){
+				 ///gestion session activation deactivation liste des session de niveau
+				 url="<?=$this->url('niveau/actions-niveau-parametrage')?>";
+			} else if(keysplit[0]=="GPERE"){
+				  url="<?=$this->url('session/actions-display-linksession')?>";
+			}else if(keysplit[0]=="PERE"){
+				  url="<?=$this->url('session/actions-display-linksession')?>/"+data.node.key;
+			}else{
+				 url="<?=$this->url('session/actions-display-linksession')?>/"+data.node.key;
+			}
+			 
+	    	$.ajax({
+	    		type:"POST",
+	    		url:url , 
+	    		data:{
+	    			niveau:data.node.key 
+		    		,anneescolaire:1
+		    		},
+	    		beforeSend :function(){ 
+	    			 $('#content_ajax').html("Encours...");
+	    		    },
+	    		success:function(response){ 
+	    	    	$('#content_ajax').html(response); 
+	    		}
+	    	});	 
+		 	
+             
+    	}
+	});
+  
+	});
+ 
+
+
+
+</script>
+
+<div class="row">
+    <div class="col-md-3" id="tree"></div>
+    <div class="col-md-9">
+         
+        <div class="row">
+            <div class="col-md-12"  id="content_ajax"></div>
+        </div>
+
+    </div>
+</div> 
